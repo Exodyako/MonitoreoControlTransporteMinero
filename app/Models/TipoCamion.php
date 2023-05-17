@@ -9,4 +9,8 @@ class TipoCamion extends Model
 {
     use HasFactory;
     protected $table = "tipo_camion";
+
+    public function camiones(){
+        return $this->hasMany(related:Camion::class,foreignKey:"ca_tipo");
+    }
 }

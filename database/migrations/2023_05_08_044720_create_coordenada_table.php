@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id("coo_id");
             $table->point("coo_coordenada");
             $table->boolean("coo_activo");
-            $table->foreignId("coo_historial")->constrained(
+            $table->foreignId("coo_historial")->nullable(true)->constrained(
                 table:"historial_ruta",column:"hr_id",indexName:"coordenada_historial_id"
-            )->onDelete("cascade");
-            $table->foreignId("coo_ruta")->constrained(
-                table:"ruta",column:"ru_id",indexName:"coordenada_ruta_id")->onDelete("cascade");
-            $table->foreignId("coo_camion")->constrained(
-                table:"camion",column:"ca_id",indexName:"coordenada_camion_id")->onDelete("cascade");
-            $table->foreignId("coo_punto_interes")->constrained(
-                table:"punto_interes",column:"pi_id",indexName:"coordenada_punto_id")->onDelete("cascade");
+            )->onDelete("no action");
+            $table->foreignId("coo_ruta")->nullable(true)->constrained(
+                table:"ruta",column:"ru_id",indexName:"coordenada_ruta_id")->onDelete("no action");
+            $table->foreignId("coo_camion")->nullable(true)->constrained(
+                table:"camion",column:"ca_id",indexName:"coordenada_camion_id")->onDelete("no action");
+            $table->foreignId("coo_punto_interes")->nullable(true)->constrained(
+                table:"punto_interes",column:"pi_id",indexName:"coordenada_punto_id")->onDelete("no action");
                 $table->timestamps(); 
         });
     }

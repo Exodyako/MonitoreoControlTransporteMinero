@@ -4,12 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use MatanYadaev\EloquentSpatial\Objects\Point;
 
 class Coordenada extends Model
 {
     use HasFactory;
     protected $table = "coordenada";
+    protected $primaryKey = "coo_id";
+    
+    protected $casts = [
+        'coo_coordenada' => Point::class
+    ];
 
+    
     public function camion(){
         return $this->belongsTo(related:Camion::class,foreignKey:"coo_camion");
     }

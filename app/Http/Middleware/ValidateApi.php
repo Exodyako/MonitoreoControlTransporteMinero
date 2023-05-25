@@ -15,9 +15,12 @@ class ValidateApi
      */
     public function handle(Request $request, Closure $next): Response
     {
+        
         $jsonAccept= $request->header("Accept");
         if($jsonAccept!=null && $jsonAccept=="application/json"){
-            return $next($request);
+            $res = $next($request);
+            
+            return $res;
         }
         // return redirect()->route("error",["message"=>"Debes enviar header: 'Accept: application/json'"]);
         return to_route("error",["message"=>"Debes enviar header: 'Accept: application/json'"]);

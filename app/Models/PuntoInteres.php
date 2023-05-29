@@ -12,7 +12,7 @@ class PuntoInteres extends Model
     protected $table = "punto_interes";     
     protected $primaryKey  = 'pi_id';  
     
-    public function coordenadas(){
-        return $this->hasMany(related:Coordenada::class,foreignKey:"coo_punto_interes");
+    public function coordenada(){
+        return $this->hasOne(related:Coordenada::class,foreignKey:"coo_punto_interes");
     }
 }

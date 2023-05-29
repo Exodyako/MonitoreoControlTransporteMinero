@@ -14,10 +14,7 @@ return new class extends Migration
         Schema::create('coordenada', function (Blueprint $table) {
             $table->id("coo_id");
             $table->point("coo_coordenada");
-            $table->boolean("coo_activo");
-            $table->foreignId("coo_historial")->nullable(true)->constrained(
-                table:"historial_ruta",column:"hr_id",indexName:"coordenada_historial_id"
-            )->onDelete("no action");
+            $table->boolean("coo_activo");            
             $table->foreignId("coo_ruta")->nullable(true)->constrained(
                 table:"ruta",column:"ru_id",indexName:"coordenada_ruta_id")->onDelete("no action");
             $table->foreignId("coo_camion")->nullable(true)->constrained(

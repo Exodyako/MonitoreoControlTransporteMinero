@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->id("us_id");
-            $table->string("us_usuario",45);
+            $table->string("us_usuario",45)->unique();
             $table->string("us_contrasenia",400);
-            $table->string("us_correo",100);
+            $table->string("us_correo",100)->unique();
             $table->string("us_token",100);
             $table->foreignId("us_trabajador")->constrained(table:"trabajador",column:"co_id",indexName:"fk_usuario_trabajador");
             $table->foreignId("us_tipo")->constrained(table:"tipo_usuario",column:"tu_id",indexName:"fk_usuario_tipo");            

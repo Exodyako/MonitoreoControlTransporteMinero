@@ -27,10 +27,7 @@ return new class extends Migration
             );
             $table->foreignId("tc_conductor")->constrained(
                 table: 'trabajador', indexName: 'fk_ticket_trabajador',column:"co_id"
-            );
-            $table->foreignId("tc_historial_ruta")->constrained(
-                table: 'historial_ruta', indexName: 'fk_ticket_historial',column:"hr_id"
-            );
+            );           
         });
     }
 

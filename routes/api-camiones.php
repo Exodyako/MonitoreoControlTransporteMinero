@@ -1,7 +1,9 @@
 <?php
 use App\Http\Controllers\TrabajadorController;
-use App\Http\Controllers\PuntoInteresController;    
+use App\Http\Controllers\PuntoInteresController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(["api-camiones"])->group(function(){
+Route::middleware(["api-camiones","auth-custom"])->group(function(){
+    //login
+    Route::get("isLogged",fn()=>response()->json(["message",true],200));
+    Route::put("logout",[UsuarioController::class,"logout"]);
+
     //Punto interes rutas
     Route::get("punto-interes",[PuntoInteresController::class,"index"]);
     Route::get("punto-interes/{id}",[PuntoInteresController::class,"show"]);
@@ -27,10 +33,12 @@ Route::middleware(["api-camiones"])->group(function(){
     Route::get("trabajador",[TrabajadorController::class,"index"]);
     Route::get("trabajador/{id}",[TrabajadorController::class,"view"]);
     Route::post("trabajador",[TrabajadorController::class,"store"]);
-    Route::put("trabajador",[TrabajadorController::class,"update"]);
-
+    Route::put("trabajador",[TrabajadorController::class,"update"]);  
+    
+    Route::post("trabajador/usuario",[UsuarioController::class,"store"]);
 });
 
+Route::post("login",[UsuarioController::class,"login"]);
 // Route::any('/error', function (Request $request) {
 //     return response()->json(["message"=>$request->input("message")],400);
 // })->name("error");

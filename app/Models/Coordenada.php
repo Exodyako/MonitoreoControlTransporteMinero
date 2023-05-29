@@ -25,10 +25,6 @@ class Coordenada extends Model
         return $this->belongsTo(related:Ruta::class,foreignKey:"coo_ruta");
     }
 
-    public function historialRuta(){
-        return $this->belongsTo(related:HistorialRuta::class,foreignKey:"coo_historial");
-    }
-
     public function puntoInteres(){
         return $this->belongsTo(related:PuntoInteres::class,foreignKey:"coo_punto_interes");
     }

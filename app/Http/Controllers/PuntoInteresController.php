@@ -14,7 +14,7 @@ class PuntoInteresController extends Controller
     
     public function index(){
         $puntosInteres =  PuntoInteres::all();
-        $puntosInteres->map(fn($ele)=>$ele->coordenadas);        
+        $puntosInteres->map(fn($ele)=>$ele->coordenada);        
         return response()->json($puntosInteres);      
     }
 
@@ -37,7 +37,7 @@ class PuntoInteresController extends Controller
             $longitud=$request->input("longitud");
             $coordenada->coo_coordenada = new Point($latitud,$longitud);
             $coordenada->coo_activo = 0;
-            $puntoInteres->coordenadas()->save($coordenada);            
+            $puntoInteres->coordenada()->save($coordenada);            
         });
         return response()->json([$puntoInteres],201);
       

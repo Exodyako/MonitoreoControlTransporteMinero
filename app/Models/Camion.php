@@ -23,7 +23,7 @@ class Camion extends Model
     }
 
     public function coordenadas(){
-        return $this->hasMany(related:Coordenada::class,foreignKey:"coo_camion");
+        return $this->hasOne(related:Coordenada::class,foreignKey:"coo_camion");
     }
 
     public function tickets(){
